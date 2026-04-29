@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALZADOS ROSILLO - Confort y elegancia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #FAF9F6;
+            color: #333333;
+        }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .section-hidden { display: none; }
+        
+        /* Botón flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(37,211,102,0.4);
+            z-index: 9999;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        /* Estilos del Menú Lateral */
+        #side-menu {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-100%);
+        }
+        #side-menu.open {
+            transform: translateX(0);
+        }
+        #menu-overlay {
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            opacity: 0;
+        }
+        #menu-overlay.open {
+            pointer-events: auto;
+            opacity: 1;
+        }
+
+        .btn-menu {
+            width: 100%; padding: 3rem 2rem; border-radius: 1.5rem; font-size: 1.875rem; font-weight: bold; 
+            letter-spacing: 0.05em; display: flex; align-items: center; justify-content: space-between; 
+            color: white; margin-bottom: 1.5rem; transition: transform 0.1s; cursor: pointer; border: none;
+        }
+        .btn-menu:active { transform: scale(0.98); }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <div id="menu-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/50 z-[60]"></div>
+    <div id="side-menu" class="fixed top-0 left-0 h-full w-80 bg-white z-[70] shadow-2xl p-8 flex flex-col">
+        <button onclick="toggleMenu()" class="self-end text-4xl font-light mb-10">✕</button>
+        <nav class="flex flex-col space-y-6 text-2xl font-serif italic">
+            <button onclick="navigateTo('home'); toggleMenu()" class="text-left border-b border-gray-100 pb-4">Inicio</button>
+            <button onclick="navigateTo('mujer-menu'); toggleMenu()" class="text-left border-b border-gray-100 pb-4">Mujer</button>
+            <button onclick="navigateTo('hombre-menu'); toggleMenu()" class="text-left border-b border-gray-100 pb-4">Hombre</button>
+            <button onclick="showProducts('Ofertas'); toggleMenu()" class="text-left border-b border-gray-100 pb-4 text-red-600 font-bold uppercase not-italic tracking-wider">OFERTAS</button>
+            <button onclick="navigateTo('como-comprar'); toggleMenu()" class="text-left border-b border-gray-100 pb-4 text-blue-800 font-bold not-italic">¿Cómo comprar?</button>
+        </nav>
+        <div class="mt-auto text-sm text-gray-400">
+            <p>Calle San Juan de Dios 52, Granada</p>
+            <p>958 286 106</p>
+        </div>
+    </div>
+
+    <button onclick="toggleMenu()" class="fixed top-6 left-6 z-50 bg-white/80 p-3 rounded-xl shadow-md border border-gray-100">
+        <svg class="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+    </button>
+
+    <a href="https://wa.me/34637555830" class="whatsapp-float" target="_blank">
+        <svg class="w-12 h-12 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    </a>
+
+    <header id="main-header" class="bg-white py-12 px-4 text-center shadow-sm border-b border-gray-100 sticky top-0 z-40">
+        <h1 class="text-4xl md:text-6xl font-serif font-bold text-gray-900 tracking-tighter uppercase">CALZADOS ROSILLO</h1>
+        <div class="w-16 h-1 bg-gray-900 mx-auto mt-4 mb-2"></div>
+        <p class="text-sm md:text-lg tracking-[0.4em] text-gray-500 uppercase font-semibold italic">Confort y elegancia</p>
+    </header>
+
+    <main class="max-w-4xl mx-auto w-full p-6 md:p-10 flex-grow">
+        
+        <div id="back-button-container" class="mb-12 section-hidden">
+            <button onclick="goBack()" class="w-full bg-white border-2 border-gray-900 text-gray-900 font-bold py-6 rounded-2xl flex items-center justify-center text-2xl hover:bg-gray-50 cursor-pointer shadow-sm transition-all">
+                <span class="mr-3 text-3xl font-light">←</span> VOLVER ATRÁS
+            </button>
+        </div>
+
+        <section id="section-home" class="space-y-8">
+            <h2 class="text-center text-3xl font-serif font-medium mb-10 text-gray-700 italic">Seleccione una sección</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <button onclick="navigateTo('mujer-menu')" class="relative h-96 rounded-3xl overflow-hidden group border-0 shadow-lg cursor-pointer w-full">
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <span class="text-white text-5xl font-serif font-bold tracking-widest uppercase">Mujer</span>
+                    </div>
+                </button>
+                <button onclick="navigateTo('hombre-menu')" class="relative h-96 rounded-3xl overflow-hidden group border-0 shadow-lg cursor-pointer w-full">
+                    <img src="https://images.unsplash.com/photo-1614252339474-13eb61005fbc?auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <span class="text-white text-5xl font-serif font-bold tracking-widest uppercase">Hombre</span>
+                    </div>
+                </button>
+            </div>
+        </section>
+
+        <section id="section-mujer-menu" class="section-hidden space-y-6">
+            <button onclick="showProducts('Sandalias Mujer')" class="btn-menu bg-[#3B3A36]"><span>SANDALIAS</span> <span>›</span></button>
+            <button onclick="showProducts('Deportivas Mujer')" class="btn-menu bg-[#2e7d32]"><span>DEPORTIVAS</span> <span>›</span></button>
+            <button onclick="showProducts('Complementos Mujer')" class="btn-menu bg-[#A39171]"><span>COMPLEMENTOS</span> <span>›</span></button>
+        </section>
+
+        <section id="section-hombre-menu" class="section-hidden space-y-6">
+            <button onclick="showProducts('Zapatos Hombre')" class="btn-menu bg-[#2C3E50]"><span>ZAPATOS</span> <span>›</span></button>
+            <button onclick="showProducts('Deportivas Hombre')" class="btn-menu bg-[#2e7d32]"><span>DEPORTIVAS</span> <span>›</span></button>
+            <button onclick="showProducts('Complementos Hombre')" class="btn-menu bg-[#7A8B99]"><span>COMPLEMENTOS</span> <span>›</span></button>
+        </section>
+
+        <section id="section-products" class="section-hidden">
+            <h2 id="category-title" class="text-center text-4xl font-serif font-bold text-gray-900 border-b-4 border-gray-200 pb-4 mb-10 uppercase tracking-widest">Categoría</h2>
+            
+            <div id="no-products-msg" class="hidden text-center py-10 text-xl text-gray-500 italic">
+                Actualmente no hay productos en esta categoría.
+            </div>
+
+            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 gap-10"></div>
+        </section>
+
+        <section id="section-como-comprar" class="section-hidden space-y-10">
+            <h2 class="text-center text-5xl font-serif font-bold text-gray-900 mb-4">¿Cómo comprar?</h2>
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 space-y-8 text-xl leading-relaxed">
+                <div class="flex gap-6">
+                    <span class="bg-gray-900 text-white w-12 h-12 flex items-center justify-center rounded-full font-bold shrink-0">1</span>
+                    <p><strong>Elige tu calzado:</strong> Navega por nuestro catálogo hasta encontrar el modelo que más te guste.</p>
+                </div>
+                <div class="flex gap-6">
+                    <span class="bg-gray-900 text-white w-12 h-12 flex items-center justify-center rounded-full font-bold shrink-0">2</span>
+                    <p><strong>Contacta por WhatsApp:</strong> Haz clic en el botón verde "PEDIR POR WHATSAPP" que aparece bajo cada zapato. Se abrirá un chat directo con nosotros.</p>
+                </div>
+                <div class="flex gap-6">
+                    <span class="bg-gray-900 text-white w-12 h-12 flex items-center justify-center rounded-full font-bold shrink-0">3</span>
+                    <p><strong>Confirmación:</strong> Te asesoraremos y confirmaremos la disponibilidad de tu talla y el color en tiempo real.</p>
+                </div>
+                <div class="flex gap-6">
+                    <span class="bg-gray-900 text-white w-12 h-12 flex items-center justify-center rounded-full font-bold shrink-0">4</span>
+                    <p><strong>Pago y Envío:</strong> Puedes recogerlo en nuestra tienda en Granada o te lo enviamos a casa tras realizar el pago seguro.</p>
+                </div>
+            </div>
+            <div class="text-center pt-8">
+                <button onclick="navigateTo('home')" class="bg-gray-900 text-white px-10 py-5 rounded-2xl font-bold uppercase tracking-widest">Entendido, ir a la tienda</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 text-gray-300 py-16 px-6 text-center mt-20">
+        <h3 class="text-white text-3xl font-serif font-bold mb-6 tracking-widest uppercase">CALZADOS ROSILLO</h3>
+        <p class="text-xl mb-4 italic">Calle San Juan de Dios 52, Granada</p>
+        <div class="space-y-3 text-lg">
+            <p>Teléfono: <span class="text-white font-bold">958 286 106</span> | <span class="text-white font-bold">637 555 830</span></p>
+        </div>
+        <div class="mt-12 pt-8 border-t border-gray-800 text-xs tracking-widest uppercase opacity-40">
+            &copy; 2024 Calzados Rosillo - Tradición y Calidad
+        </div>
+    </footer>
+
+    <script>
+        let currentCategory = '';
+
+        function toggleMenu() {
+            document.getElementById('side-menu').classList.toggle('open');
+            document.getElementById('menu-overlay').classList.toggle('open');
+        }
+
+        function navigateTo(sectionId) {
+            const header = document.getElementById('main-header');
+            sectionId === 'home' ? header.classList.remove('section-hidden') : header.classList.add('section-hidden');
+
+            const sections = ['home', 'mujer-menu', 'hombre-menu', 'products', 'como-comprar'];
+            sections.forEach(s => document.getElementById('section-' + s).classList.add('section-hidden'));
+            document.getElementById('section-' + sectionId).classList.remove('section-hidden');
+
+            const backBtn = document.getElementById('back-button-container');
+            sectionId === 'home' ? backBtn.classList.add('section-hidden') : backBtn.classList.remove('section-hidden');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goBack() {
+            const productsVisible = !document.getElementById('section-products').classList.contains('section-hidden');
+            const menuVisible = !document.getElementById('section-mujer-menu').classList.contains('section-hidden') || !document.getElementById('section-hombre-menu').classList.contains('section-hidden');
+            const helpVisible = !document.getElementById('section-como-comprar').classList.contains('section-hidden');
+
+            if (productsVisible) {
+                if(currentCategory === 'Ofertas'){
+                    navigateTo('home');
+                } else {
+                    currentCategory.includes('Mujer') ? navigateTo('mujer-menu') : navigateTo('hombre-menu');
+                }
+            } else if (menuVisible || helpVisible) {
+                navigateTo('home');
+            }
+        }
+
+        function cambiarFoto(idImagen, nuevaFoto) {
+            if(nuevaFoto && nuevaFoto !== 'undefined') {
+                document.getElementById(idImagen).src = nuevaFoto;
+            }
+        }
+
+        // --- DATABASE ---
+        const sandaliasMujer = [
+            { nombre: "Modelo Caldes", precio: "65,00 €", desc: "Elegancia y máxima comodidad.", colores: [{n: "Negro", h: "#000", foto: "caldes-negro.jpg"}, {n: "Piedra", h: "#B5A694", foto: "caldes-piedra.jpg"}], img: "caldes-negro.jpg" },
+            { nombre: "Modelo Ter", precio: "59,95 €", desc: "Suela acolchada.", colores: [{n: "Mostaza", h: "#E3A018", foto: "ter-mostaza.jpg"}, {n: "Negro", h: "#000", foto: "ter-negro.jpg"}, {n: "Verde", h: "#98FFD8", foto: "ter-verde.jpg"}, {n: "Piedra", h: "#B5A694", foto: "ter-piedra.jpg"}], img: "ter-negro.jpg" },
+            { nombre: "Modelo Laia-nt", precio: "75,00 €", desc: "Acabado premium.", colores: [{n: "Negro", h: "#000", foto: "laia-negro.jpg"}, {n: "Rojo", h: "#C51E3A", foto: "laia-rojo.jpg"}], img: "laia-negro.jpg" },
+            { nombre: "Modelo Laila", precio: "89,95 €", desc: "Acabado plata.", colores: [{n: "Plata", h: "#C0C0C0", foto: "laila-plata.jpg"}], img: "laila-plata.jpg" },
+            { nombre: "Modelo Suyute", precio: "65,00 €", desc: "Estilo rústico natural.", colores: [{n: "Beige", h: "#F5F5DC", foto: "suyute-sandaliasbeige.jpg"}, {n: "Kaki", h: "#4B5320", foto: "suyute-sandaliaskaki.jpg"}, {n: "Marrón", h: "#8B4513", foto: "suyute-sandaliasmarron.jpg"}], img: "suyute-sandaliasbeige.jpg" },
+            { nombre: "Modelo Teide", precio: "65,00 €", desc: "Brillo especial.", colores: [{n: "Plata", h: "#E5E4E2", foto: "teide-plata.jpg"}], img: "teide-plata.jpg" },
+            { nombre: "Modelo Bernia", precio: "69,95 €", desc: "Clásico y confortable.", colores: [{n: "Plata", h: "#D3D3D3", foto: "bernia-plata.jpg"}], img: "bernia-plata.jpg" },
+            { nombre: "Modelo Verdi", precio: "59,95 €", desc: "Elegancia sutil.", colores: [{n: "Crudo", h: "#FFFDD0", foto: "verdi-cru.jpg"}], img: "verdi-cru.jpg" }
+        ];
+
+        const deportivasMujer = [
+            { nombre: "Modelo Saguaro", precio: "45,00 €", desc: "Calzado barefoot flexible de alto rendimiento.", colores: [{n: "Rosa", h: "#FFB6C1", foto: "saguaro-rosa.jpg"}, {n: "Azul", h: "#4682B4", foto: "saguaro-azul.jpg"}], img: "saguaro-rosa.jpg" }
+        ];
+
+        const complementosMujer = [
+            { nombre: "Bolso Grande", precio: "Consultar", desc: "Máximo espacio y diseño elegante.", colores: [{n: "Varios", h: "#8B4513", foto: "bolso-grande.jpg"}], img: "bolso-grande.jpg" },
+            { nombre: "Bolso Pequeño", precio: "Consultar", desc: "Práctico para salidas rápidas.", colores: [{n: "Varios", h: "#333", foto: "bolso-pequeno.jpg"}], img: "bolso-pequeno.jpg" },
+            { nombre: "Bolso Móvil", precio: "Consultar", desc: "Lleva lo esencial contigo.", colores: [{n: "Varios", h: "#666", foto: "bolso-movil.jpg"}], img: "bolso-movil.jpg" }
+        ];
+
+        const zapatosHombre = [
+            { nombre: "Modelo Pitas", precio: "59,00 €", desc: "Ligereza extrema y estilo casual.", colores: [{n: "Kaki", h: "#4B5320", foto: "pitas-kaki.jpg"}, {n: "Tórtola", h: "#918E85", foto: "pitas-tortola.jpg"}, {n: "Azul", h: "#000080", foto: "pitas-azul.jpg"}], img: "pitas-kaki.jpg" }
+        ];
+
+        const deportivasHombre = [
+            { nombre: "Modelo Saguaro", precio: "45,00 €", desc: "Barefoot ergonómico para máximo confort.", colores: [{n: "Gris/Naranja", h: "#808080", foto: "saguaro-grisnaranja.jpg"}, {n: "Azul", h: "#4682B4", foto: "saguaro-azul.jpg"}, {n: "Negro", h: "#000", foto: "saguaro-negras.jpg"}, {n: "Gris", h: "#BEBEBE", foto: "saguaro-girs.jpg"}], img: "saguaro-negras.jpg" }
+        ];
+
+        const complementosHombre = [
+            { nombre: "Cinturón Piel marrón", precio: "30,00 €", desc: "Dos colores en uno: negro y marrón.", colores: [{n: "Negro/Marrón", h: "#333", foto: "cinturon.jpg"}], img: "cinturon.jpg" },
+            { nombre: "Cartera Tarjetero Piel", precio: "28,00 €", desc: "Diseño fino de piel auténtica.", colores: [{n: "Cuero", h: "#8B5A2B", foto: "cartera.jpg"}], img: "cartera.jpg" }
+        ];
+
+        const ofertas = [];
+
+        function showProducts(cat) {
+            currentCategory = cat;
+            document.getElementById('category-title').innerText = cat;
+            
+            if(cat === 'Ofertas') {
+                document.getElementById('category-title').classList.add('text-red-600');
+            } else {
+                document.getElementById('category-title').classList.remove('text-red-600');
+            }
+
+            const grid = document.getElementById('product-grid');
+            const noProductsMsg = document.getElementById('no-products-msg');
+            grid.innerHTML = '';
+            
+            let data = [];
+            if(cat === 'Sandalias Mujer') data = sandaliasMujer;
+            else if(cat === 'Deportivas Mujer') data = deportivasMujer;
+            else if(cat === 'Complementos Mujer') data = complementosMujer;
+            else if(cat === 'Zapatos Hombre') data = zapatosHombre;
+            else if(cat === 'Deportivas Hombre') data = deportivasHombre;
+            else if(cat === 'Complementos Hombre') data = complementosHombre;
+            else if(cat === 'Ofertas') data = ofertas;
+
+            if(data.length === 0) {
+                noProductsMsg.classList.remove('hidden');
+                grid.classList.add('hidden');
+            } else {
+                noProductsMsg.classList.add('hidden');
+                grid.classList.remove('hidden');
+                
+                data.forEach((p, index) => {
+                    let cols = p.colores.map(c => `
+                        <button onclick="cambiarFoto('img-prod-${index}', '${c.foto || p.img}')" class="flex items-center bg-gray-50 px-3 py-1 rounded-full border border-gray-200 hover:bg-gray-200 transition-colors cursor-pointer active:scale-95">
+                            <span class="w-3 h-3 rounded-full mr-2 border border-gray-300" style="background-color: ${c.h}"></span>
+                            <span class="text-[10px] font-bold text-gray-600 uppercase">${c.n}</span>
+                        </button>
+                    `).join('');
+
+                    let ofertaBadge = cat === 'Ofertas' ? `<div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md z-10 uppercase tracking-widest">Oferta</div>` : '';
+
+                    grid.innerHTML += `
+                        <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 p-6 flex flex-col relative">
+                            ${ofertaBadge}
+                            <div class="w-full aspect-square rounded-2xl overflow-hidden bg-gray-50 mb-6">
+                                <img id="img-prod-${index}" src="${p.img}" alt="${p.nombre}" class="w-full h-full object-cover transition-opacity duration-300" onerror="this.src='https://placehold.co/600x600?text=Foto+Proximamente'">
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-gray-900 mb-2">${p.nombre}</h3>
+                            <p class="text-gray-500 text-sm mb-4 italic">${p.desc}</p>
+                            <div class="flex flex-wrap gap-2 mb-6">${cols}</div>
+                            <div class="mt-auto pt-4 border-t">
+                                <p class="text-3xl font-black text-gray-900 mb-6 text-center">${p.precio}</p>
+                                <a href="https://wa.me/34637555830?text=Hola,%20me%20gustaría%20pedir%20información%20sobre%20el%20${encodeURIComponent(p.nombre)}${cat === 'Ofertas' ? '%20que%20está%20en%20OFERTA' : ''}" target="_blank" class="block w-full bg-[#25D366] text-white font-bold py-5 rounded-xl text-lg text-center shadow-md uppercase tracking-wider hover:bg-[#1DA851] transition-colors">
+                                    PEDIR POR WHATSAPP
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            navigateTo('products');
+        }
+    </script>
+</body>
+</html>
