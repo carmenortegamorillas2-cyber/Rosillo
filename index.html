@@ -126,10 +126,12 @@
         </section>
 
         <section id="section-hombre-menu" class="section-hidden space-y-6">
-            <button onclick="showProducts('Zapatos Hombre')" class="btn-menu bg-[#2C3E50]"><span>ZAPATOS</span> <span>›</span></button>
-            <button onclick="showProducts('Deportivas Hombre')" class="btn-menu bg-[#2e7d32]"><span>DEPORTIVAS</span> <span>›</span></button>
-            <button onclick="showProducts('Complementos Hombre')" class="btn-menu bg-[#7A8B99]"><span>COMPLEMENTOS</span> <span>›</span></button>
-        </section>
+    <button onclick="showProducts('Zapatos Hombre')" class="btn-menu bg-[#2C3E50]"><span>ZAPATOS</span> <span>›</span></button>
+    <!-- Nuevo botón añadido -->
+    <button onclick="showProducts('Castellanos LG')" class="btn-menu bg-[#4a3728]"><span>CASTELLANOS LG</span> <span>›</span></button>
+    <button onclick="showProducts('Deportivas Hombre')" class="btn-menu bg-[#2e7d32]"><span>DEPORTIVAS</span> <span>›</span></button>
+    <button onclick="showProducts('Complementos Hombre')" class="btn-menu bg-[#7A8B99]"><span>COMPLEMENTOS</span> <span>›</span></button>
+</section>
 
         <section id="section-products" class="section-hidden">
             <h2 id="category-title" class="text-center text-4xl font-serif font-bold text-gray-900 border-b-4 border-gray-200 pb-4 mb-10 uppercase tracking-widest">Categoría</h2>
@@ -253,6 +255,42 @@
             { nombre: "Modelo Saguaro", precio: "45,00 €", desc: "Barefoot ergonómico para máximo confort.", colores: [{n: "Gris/Naranja", h: "#808080", foto: "saguaro-grisnaranja.jpg"}, {n: "Azul", h: "#4682B4", foto: "saguaro-azul.jpg"}, {n: "Negro", h: "#000", foto: "saguaro-negras.jpg"}, {n: "Gris", h: "#BEBEBE", foto: "saguaro-girs.jpg"}], img: "saguaro-negras.jpg" }
         ];
 
+        const castellanosLG = [
+    { 
+        nombre: "Marbella Antifaz", 
+        precio: "Consultar", 
+        desc: "Clásico mocasín con antifaz, elegancia tradicional.", 
+        colores: [
+            {n: "Negro", h: "#000", foto: "marbella-antifaz-negro.jpg"}, 
+            {n: "Marrón", h: "#5D4037", foto: "marbella-antifaz-marron.jpg"}, 
+            {n: "Corinto", h: "#4E0707", foto: "marbella-antifaz-corinto.jpg"}
+        ], 
+        img: "marbella-antifaz-negro.jpg" 
+    },
+    { 
+        nombre: "Marbella Pasadas Borlas", 
+        precio: "Consultar", 
+        desc: "Diseño sofisticado con detalle de borlas.", 
+        colores: [
+            {n: "Negro", h: "#000", foto: "marbella-borlas-negro.jpg"}, 
+            {n: "Marrón", h: "#5D4037", foto: "marbella-borlas-marron.jpg"}, 
+            {n: "Corinto", h: "#4E0707", foto: "marbella-borlas-corinto.jpg"}
+        ], 
+        img: "marbella-borlas-negro.jpg" 
+    },
+    { 
+        nombre: "Marbella Pasadas Lazo", 
+        precio: "Consultar", 
+        desc: "Acabado distinguido con detalle de lazo.", 
+        colores: [
+            {n: "Negro", h: "#000", foto: "marbella-lazo-negro.jpg"}, 
+            {n: "Marrón", h: "#5D4037", foto: "marbella-lazo-marron.jpg"}, 
+            {n: "Corinto", h: "#4E0707", foto: "marbella-lazo-corinto.jpg"}
+        ], 
+        img: "marbella-lazo-negro.jpg" 
+    }
+];
+
         const complementosHombre = [
             { nombre: "Cinturón Piel marrón", precio: "30,00 €", desc: "Dos colores en uno: negro y marrón.", colores: [{n: "Negro/Marrón", h: "#333", foto: "cinturon.jpg"}], img: "cinturon.jpg" },
             { nombre: "Cartera Tarjetero Piel", precio: "28,00 €", desc: "Diseño fino de piel auténtica.", colores: [{n: "Cuero", h: "#8B5A2B", foto: "cartera.jpg"}], img: "cartera.jpg" }
@@ -280,6 +318,7 @@
             else if(cat === 'Complementos Mujer') data = complementosMujer;
             else if(cat === 'Zapatos Hombre') data = zapatosHombre;
             else if(cat === 'Deportivas Hombre') data = deportivasHombre;
+            else if(cat === 'Castellanos LG') data = castellanosLG;
             else if(cat === 'Complementos Hombre') data = complementosHombre;
             else if(cat === 'Ofertas') data = ofertas;
 
