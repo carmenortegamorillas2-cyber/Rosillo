@@ -66,8 +66,8 @@
         <button onclick="toggleMenu()" class="self-end text-4xl font-light mb-10">✕</button>
         <nav class="flex flex-col space-y-6 text-2xl font-serif italic">
             <button onclick="navigateTo('home'); toggleMenu()" class="text-left border-b border-gray-100 pb-4">Inicio</button>
-            <button onclick="navigateTo('mujer-menu'); toggleMenu()" class="text-left border-b border-gray-100 pb-4">Mujer</button>
-            <button onclick="navigateTo('hombre-menu'); toggleMenu()" class="text-left border-b border-gray-100 pb-4">Hombre</button>
+            <button onclick="navigateTo('Calzado mujer-menu'); toggleMenu()" class="text-left border-b border-gray-100 pb-4">Mujer</button>
+            <button onclick="navigateTo('Calzado hombre-menu'); toggleMenu()" class="text-left border-b border-gray-100 pb-4">Hombre</button>
             <button onclick="showProducts('Ofertas'); toggleMenu()" class="text-left border-b border-gray-100 pb-4 text-red-600 font-bold uppercase not-italic tracking-wider">OFERTAS</button>
             <button onclick="navigateTo('como-comprar'); toggleMenu()" class="text-left border-b border-gray-100 pb-4 text-blue-800 font-bold not-italic">¿Cómo comprar?</button>
         </nav>
@@ -148,7 +148,7 @@
             <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 space-y-8 text-xl leading-relaxed">
                 <div class="flex gap-6">
                     <span class="bg-gray-900 text-white w-12 h-12 flex items-center justify-center rounded-full font-bold shrink-0">1</span>
-                    <p><strong>Elige tu calzado:</strong> Navega por nuestro catálogo hasta encontrar el modelo que más te guste.</p>
+                    <p><strong>Elige tu calzado:</strong> Navega por nuestro catálogo hasta encontrar el calzado que más te guste.</p>
                 </div>
                 <div class="flex gap-6">
                     <span class="bg-gray-900 text-white w-12 h-12 flex items-center justify-center rounded-full font-bold shrink-0">2</span>
@@ -227,39 +227,41 @@
 
         // --- DATABASE ---
         const sandaliasMujer = [
-            { nombre: "Modelo Caldes", precio: "65,00 €", desc: "Elegancia y máxima comodidad.", colores: [{n: "Negro", h: "#000", foto: "caldes-negro.jpg"}, {n: "Piedra", h: "#B5A694", foto: "caldes-piedra.jpg"}], img: "caldes-negro.jpg" },
-            { nombre: "Modelo Ter", precio: "59,95 €", desc: "Suela acolchada.", colores: [{n: "Mostaza", h: "#E3A018", foto: "ter-mostaza.jpg"}, {n: "Negro", h: "#000", foto: "ter-negro.jpg"}, {n: "Verde", h: "#98FFD8", foto: "ter-verde.jpg"}, {n: "Piedra", h: "#B5A694", foto: "ter-piedra.jpg"}], img: "ter-negro.jpg" },
-            { nombre: "Modelo Laia-nt", precio: "75,00 €", desc: "Acabado premium.", colores: [{n: "Negro", h: "#000", foto: "laia-negro.jpg"}, {n: "Rojo", h: "#C51E3A", foto: "laia-rojo.jpg"}], img: "laia-negro.jpg" },
-            { nombre: "Modelo Laila", precio: "89,95 €", desc: "Acabado plata.", colores: [{n: "Plata", h: "#C0C0C0", foto: "laila-plata.jpg"}], img: "laila-plata.jpg" },
-            { nombre: "Modelo Suyute", precio: "65,00 €", desc: "Estilo rústico natural.", colores: [{n: "Beige", h: "#F5F5DC", foto: "suyute-sandaliasbeige.jpg"}, {n: "Kaki", h: "#4B5320", foto: "suyute-sandaliaskaki.jpg"}, {n: "Marrón", h: "#8B4513", foto: "suyute-sandaliasmarron.jpg"}], img: "suyute-sandaliasbeige.jpg" },
-            { nombre: "Modelo Teide", precio: "65,00 €", desc: "Brillo especial.", colores: [{n: "Plata", h: "#E5E4E2", foto: "teide-plata.jpg"}], img: "teide-plata.jpg" },
-            { nombre: "Modelo Bernia", precio: "69,95 €", desc: "Clásico y confortable.", colores: [{n: "Plata", h: "#D3D3D3", foto: "bernia-plata.jpg"}], img: "bernia-plata.jpg" },
-            { nombre: "Modelo Verdi", precio: "59,95 €", desc: "Elegancia sutil.", colores: [{n: "Crudo", h: "#FFFDD0", foto: "verdi-cru.jpg"}], img: "verdi-cru.jpg" }
+            { nombre: "Sandalia Toni Pons  Modelo Caldes", precio: "65,00 €", desc: "Fabricado en España", colores: [{n: "Negro", h: "#000", foto: "caldes-negro.jpg"}, {n: "Piedra", h: "#B5A694", foto: "caldes-piedra.jpg"}], img: "caldes-negro.jpg" },
+            { nombre: "sandalia Toni Pons  Modelo Ter", precio: "59,95 €", desc: "Fabricado en España.", colores: [{n: "Mostaza", h: "#E3A018", foto: "ter-mostaza.jpg"}, {n: "Negro", h: "#000", foto: "ter-negro.jpg"}, {n: "Verde", h: "#98FFD8", foto: "ter-verde.jpg"}, {n: "Piedra", h: "#B5A694", foto: "ter-piedra.jpg"}], img: "ter-negro.jpg" },
+            { nombre: "Sandalia Toni Pons  Modelo Laia-nt", precio: "75,00 €", desc: "Fabricado en España.", colores: [{n: "Negro", h: "#000", foto: "laia-negro.jpg"}, {n: "Rojo", h: "#C51E3A", foto: "laia-rojo.jpg"}], img: "laia-negro.jpg" },
+            { nombre: "Sandalia Toni Pons  Modelo Laila", precio: "89,95 €", desc: "Fabricado en España.", colores: [{n: "Plata", h: "#C0C0C0", foto: "laila-plata.jpg"}], img: "laila-plata.jpg" },
+            { nombre: "Sandalia Suyute", precio: "65,00 €", desc: "Fabricado en España.", colores: [{n: "Beige", h: "#F5F5DC", foto: "suyute-sandaliasbeige.jpg"}, {n: "Kaki", h: "#4B5320", foto: "suyute-sandaliaskaki.jpg"}, {n: "Marrón", h: "#8B4513", foto: "suyute-sandaliasmarron.jpg"}], img: "suyute-sandaliasbeige.jpg" },
+            { nombre: "Sandalia Toni Pons  Modelo Teide", precio: "65,00 €", desc: "Fabricado en España.", colores: [{n: "Plata", h: "#E5E4E2", foto: "teide-plata.jpg"}], img: "teide-plata.jpg" },
+            { nombre: "Sandalia Toni Pons  Modelo Bernia", precio: "69,95 €", desc: "Fabricado en España.", colores: [{n: "Plata", h: "#D3D3D3", foto: "bernia-plata.jpg"}], img: "bernia-plata.jpg" },
+            { nombre: "Sandalia Toni Pons  Modelo Verdi", precio: "59,95 €", desc: "Fabricado en España.", colores: [{n: "Crudo", h: "#FFFDD0", foto: "verdi-cru.jpg"}], img: "verdi-cru.jpg" }
         ];
 
         const deportivasMujer = [
-            { nombre: "Modelo Saguaro", precio: "45,00 €", desc: "Calzado barefoot flexible de alto rendimiento.", colores: [{n: "Rosa", h: "#FFB6C1", foto: "saguaro-rosa.jpg"}, {n: "Azul", h: "#4682B4", foto: "saguaro-azul.jpg"}], img: "saguaro-rosa.jpg" }
+            { nombre: "Barefoot Saguaro", precio: "45,00 €", desc: "Calzado barefoot, ideal para la salud de tus pies, que repercute en todo el cuerpo.", colores: [{n: "Rosa", h: "#FFB6C1", foto: "saguaro-rosa.jpg"}, {n: "Azul", h: "#4682B4", foto: "saguaro-azul.jpg"}], img: "saguaro-rosa.jpg" }
         ];
 
         const complementosMujer = [
-            { nombre: "Bolso Grande", precio: "Consultar", desc: "Máximo espacio y diseño elegante.", colores: [{n: "Varios", h: "#8B4513", foto: "bolso-grande.jpg"}], img: "bolso-grande.jpg" },
-            { nombre: "Bolso Pequeño", precio: "Consultar", desc: "Práctico para salidas rápidas.", colores: [{n: "Varios", h: "#333", foto: "bolso-pequeño.jpg"}], img: "bolso-pequeno.jpg" },
-            { nombre: "Bolso Móvil", precio: "Consultar", desc: "Lleva lo esencial contigo.", colores: [{n: "Varios", h: "#666", foto: "bolso-movil.jpg"}], img: "bolso-movil.jpg" }
+            { nombre: "Bolso Rafia Toni Pons", precio: "Consultar", desc: "Fabricado en España.", colores: [{n: "Varios", h: "#8B4513", foto: "bolso-grande.jpg"}], img: "bolso-grande.jpg" },
+            { nombre: "Bolso Rafia Toni Pons", precio: "Consultar", desc: "Fabricado en España.", colores: [{n: "Varios", h: "#333", foto: "bolso-pequeño.jpg"}], img: "bolso-pequeno.jpg" },
+            { nombre: "Bolso Móvil Toni Pons", precio: "Consultar", desc: "Fabricado en España.", colores: [{n: "Varios", h: "#666", foto: "bolso-movil.jpg"}], img: "bolso-movil.jpg" }
         ];
 
         const zapatosHombre = [
-            { nombre: "Modelo Pitas", precio: "59,00 €", desc: "Ligereza extrema y estilo casual.", colores: [{n: "Kaki", h: "#4B5320", foto: "pitas-kaki.jpg"}, {n: "Tórtola", h: "#918E85", foto: "pitas-tortola.jpg"}, {n: "Azul", h: "#000080", foto: "pitas-azul.jpg"}], img: "pitas-kaki.jpg" }
-        ];
+          { nombre: "Wallabee WalkinPitas", precio: "59,00 €", desc: "Ligereza extrema y estilo casual.", colores: [{n: "Kaki", h: "#4B5320", foto: "pitas-kaki.jpg"}, {n: "Tórtola", h: "#918E85", foto: "pitas-tortola.jpg"}, {n: "Azul", h: "#000080", foto: "pitas-azul.jpg"}], img: "pitas-kaki.jpg" }
+          { nombre: "Wallabee WalkinPitas", precio: "59,00 €", desc: "Ligereza extrema y estilo casual.", colores: [{n: "Tórtola",  h: "#918E85", foto:  "pitas-tortola.jpg"}, {n: "Tórtola", h: "#918E85", foto: "pitas-tortola.jpg"}, {n: "Azul", h: "#000080", foto: "pitas-azul.jpg"}], img: "pitas-kaki.jpg" }
+          { nombre: "Wallabee WalkinPitas", precio: "59,00 €", desc: "Ligereza extrema y estilo casual.", colores: [{n: "Azul", h: "#000080" , foto: "pitas-azul.jpg"}, {n: "Tórtola", h: "#918E85", foto: "pitas-tortola.jpg"}, {n: "Azul", h: "#000080", foto: "pitas-azul.jpg"}], img: "pitas-kaki.jpg" }
+       ];
 
         const deportivasHombre = [
-            { nombre: "Modelo Saguaro", precio: "45,00 €", desc: "Barefoot ergonómico para máximo confort.", colores: [{n: "Gris/Naranja", h: "#808080", foto: "saguaro-grisnaranja.jpg"}, {n: "Azul", h: "#4682B4", foto: "saguaro-azul.jpg"}, {n: "Negro", h: "#000", foto: "saguaro-negras.jpg"}, {n: "Gris", h: "#BEBEBE", foto: "saguaro-girs.jpg"}], img: "saguaro-negras.jpg" }
+            { nombre: "Barefoot Saguaro", precio: "45,00 €", desc: "Calzado barefoot, ideal para la salud de tus pies, que repercute en todo el cuerpo.", colores: [{n: "Gris/Naranja", h: "#808080", foto: "saguaro-grisnaranja.jpg"}, {n: "Azul", h: "#4682B4", foto: "saguaro-azul.jpg"}, {n: "Negro", h: "#000", foto: "saguaro-negras.jpg"}, {n: "Gris", h: "#BEBEBE", foto: "saguaro-girs.jpg"}], img: "saguaro-negras.jpg" }
         ];
 
         const castellanosLG = [
     { 
         nombre: "Marbella Antifaz", 
         precio: "Consultar", 
-        desc: "Clásico mocasín con antifaz, elegancia tradicional.", 
+        desc: "Clásico mocasín con antifaz, fabricado en España.", 
         colores: [
             {n: "Negro", h: "#000", foto: "marbella-antifaz-negro.jpg"}, 
             {n: "Marrón", h: "#5D4037", foto: "marbella-antifaz-marron.jpg"}, 
@@ -270,7 +272,7 @@
     { 
         nombre: "Marbella Pasadas Borlas", 
         precio: "Consultar", 
-        desc: "Diseño sofisticado con detalle de borlas.", 
+        desc: "Fabricado en España.", 
         colores: [
             {n: "Negro", h: "#000", foto: "marbella-borlas-negro.jpg"}, 
             {n: "Marrón", h: "#5D4037", foto: "marbella-borlas-marron.jpg"}, 
@@ -281,7 +283,7 @@
     { 
         nombre: "Marbella Pasadas Lazo", 
         precio: "Consultar", 
-        desc: "Acabado distinguido con detalle de lazo.", 
+        desc: "fabricado en España.", 
         colores: [
             {n: "Negro", h: "#000", foto: "marbella-lazo-negro.jpg"}, 
             {n: "Marrón", h: "#5D4037", foto: "marbella-lazo-marron.jpg"}, 
