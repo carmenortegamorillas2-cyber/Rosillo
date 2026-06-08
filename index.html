@@ -121,6 +121,7 @@
 
         <section id="section-mujer-menu" class="section-hidden space-y-6">
             <button onclick="showProducts('Sandalias Mujer')" class="btn-menu bg-[#3B3A36]"><span>SANDALIAS</span> <span>›</span></button>
+            <button onclick="showProducts('Zapatos Mujer')" class="btn-menu bg-[#8B5A2B]"><span>ZAPATOS</span> <span>›</span></button>
             <button onclick="showProducts('Deportivas Mujer')" class="btn-menu bg-[#2e7d32]"><span>DEPORTIVAS</span> <span>›</span></button>
             <button onclick="showProducts('Complementos Mujer')" class="btn-menu bg-[#A39171]"><span>COMPLEMENTOS</span> <span>›</span></button>
         </section>
@@ -245,7 +246,22 @@
             { nombre: "Sandalia Toni Pons  Modelo Bernia", precio: "69,95 €", desc: "Fabricado en España.", colores: [{n: "Plata", h: "#D3D3D3", foto: "bernia-plata.jpg"}], img: "bernia-plata.jpg" },
             { nombre: "Sandalia Toni Pons  Modelo Verdi", precio: "59,95 €", desc: "Fabricado en España.", colores: [{n: "Crudo", h: "#FFFDD0", foto: "verdi-cru.jpg"}, {n: "Menta", h: "#87B393", foto: "verdi-menta.jpg"}, {n: "Torrat", h: "#C19A6B", foto: "verdi-torrat.jpg"}, {n: "Negro", h: "#000000", foto: "verdi-negro.jpg"}], img: "verdi-cru.jpg" }
         ];
-
+      const zapatosMujer = [
+            {  nombre: "Modelo Chamby636", 
+                precio: "Consultar", 
+                desc: "Comodidad y elegancia fabricada en España.", 
+                expandirColores: true, // Esto hace que se multiplique una tarjeta por color
+                colores: [
+                    {n: "Rojo", h: "#C51E3A", foto: "chamby636-rojo.jpg"}, 
+                    {n: "Cuero", h: "#8B5A2B", foto: "chamby636-cuero.jpg"}, 
+                    {n: "Azul Marino", h: "#1D2A44", foto: "chamby636-marino.jpg"}, 
+                    {n: "Beige", h: "#F5F5DC", foto: "chamby636-beige.jpg"}, 
+                    {n: "Negro", h: "#000000", foto: "chamby636-negro.jpg"}, 
+                    {n: "Platino", h: "#E5D3B3", foto: "chamby636-platino.jpg"}
+                ], 
+                img: "chamby636-cuero.jpg"
+            }
+        ];
         const deportivasMujer = [
             { nombre: "Barefoot Saguaro", precio: "45,00 €", desc: "Calzado barefoot, ideal para la salud de tus pies, que repercute en todo el cuerpo.", colores: [{n: "Rosa", h: "#FFB6C1", foto: "saguaro-rosa.jpg"}, {n: "Azul", h: "#4682B4", foto: "saguaro-azul.jpg"}], img: "saguaro-rosa.jpg" }
         ];
@@ -325,6 +341,7 @@
             
             let data = [];
             if(cat === 'Sandalias Mujer') data = sandaliasMujer;
+            else if(cat === 'Zapatos Mujer') data = zapatosMujer;
             else if(cat === 'Deportivas Mujer') data = deportivasMujer;
             else if(cat === 'Complementos Mujer') data = complementosMujer;
             else if(cat === 'Zapatos Hombre') data = zapatosHombre;
